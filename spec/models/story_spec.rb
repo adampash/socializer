@@ -7,12 +7,14 @@ RSpec.describe Story, :type => :model do
 
   it { should respond_to(:title) }
   it { should validate_presence_of(:title) }
+  it { should respond_to(:author) }
+  it { should validate_presence_of(:author) }
   it { should respond_to(:url) }
   it { should validate_presence_of(:url) }
   it { should respond_to(:tweet) }
-  it { should validate_presence_of(:tweet) }
+  # it { should validate_presence_of(:tweet) }
   it { should respond_to(:fb_post) }
-  it { should validate_presence_of(:fb_post) }
+  # it { should validate_presence_of(:fb_post) }
   it { should respond_to(:publish_at) }
   it { should validate_presence_of(:publish_at) }
   it { should respond_to(:kinja_id) }
@@ -28,6 +30,7 @@ RSpec.describe Story, :type => :model do
   it "creates from params" do
     story = Story.update_or_create({
       title: "You\"ll never guess what happens next",
+      author: "Me",
       url: "http://example.com/foo",
       domain: 'example.com',
       tweet: "This is the tweet",
@@ -41,6 +44,7 @@ RSpec.describe Story, :type => :model do
   it "updates an existing post if it already exists" do
     Story.update_or_create({
       title: "You\"ll never guess what happens next",
+      author: "Me",
       url: "http://example.com/foo",
       domain: 'example.com',
       tweet: "This is the tweet",
@@ -55,6 +59,7 @@ RSpec.describe Story, :type => :model do
   it "#published_stories returns stories that have published" do
     Story.update_or_create({
       title: "You\"ll never guess what happens next",
+      author: "Me",
       url: "http://example.com/foo",
       domain: 'example.com',
       tweet: "This is the tweet",
@@ -64,6 +69,7 @@ RSpec.describe Story, :type => :model do
     })
     Story.update_or_create({
       title: "Ready to publish",
+      author: "Me",
       url: "http://example.com/foo",
       domain: 'example.com',
       tweet: "This is the tweet",

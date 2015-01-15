@@ -1,7 +1,7 @@
 class Story < ActiveRecord::Base
   # attr_accessible :title, :url, :publish_at, :tweet, :fb_post, :domain
   validates_presence_of :title, :url, :kinja_id,
-    :publish_at, :tweet, :fb_post, :domain
+    :publish_at, :domain, :author
   validates_uniqueness_of :kinja_id
 
   def self.update_or_create(params)

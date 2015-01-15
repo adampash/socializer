@@ -16,6 +16,7 @@ end
 gem 'bootstrap-sass'
 gem 'haml-rails'
 gem 'high_voltage'
+gem 'devise'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'simple_form'

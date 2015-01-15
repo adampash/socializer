@@ -1,13 +1,5 @@
-xdescribe User do
+require 'rails_helper'
 
-  before(:each) { @user = FactoryGirl.create(:user) }
-
-  subject { @user }
-
-  it { should respond_to(:name) }
-
-  it "#name returns a string" do
-    expect(@user.name).to match 'Test User'
-  end
-
+RSpec.describe User, :type => :model do
+  pending "add some examples to (or delete) #{__FILE__}"
 end
