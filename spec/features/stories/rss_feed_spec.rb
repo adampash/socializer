@@ -7,9 +7,10 @@ feature 'RSS feed' do
   #   Given I have a valid domain
   #   When I fetch the feed
   #   Then I see a feed of upcoming posts
-  scenario "user can sign in with valid account" do
-    stories
-    expect(page).to have_content("Sign out")
+  scenario "user can fetch an rss feed" do
+    visit '/example.com/twitter.xml'
+    # stories
+    expect(page).to have_content("example.com")
   end
 
   # Scenario: User cannot sign in with invalid account
