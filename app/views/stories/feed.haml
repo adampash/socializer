@@ -2,5 +2,11 @@
   %channel
     %title= "#{@stories.first.domain} feed"
     %link= "Foo"
-    %description= "Feed for stories from #{@stories.first.domain}"
+    %description= "#{@feed_type.capitalize} feed for stories from #{@stories.first.domain}"
     %language= "en"
+    - @stories.each do |story|
+      %item
+        %title= story.title
+        %link= story.url
+        %description= @feed_type == 'twitter' ? story.tweet : story.fb_post
+        %pubDate= story.publish_at
