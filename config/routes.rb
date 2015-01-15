@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   resources :users
-  # root to: 'visitors#index'
+  root to: 'visitors#index'
   get '/auth/:provider/callback' => 'sessions#create'
   get '/signin' => 'sessions#new', :as => :signin
   get '/signout' => 'sessions#destroy', :as => :signout
   get '/auth/failure' => 'sessions#failure'
+  get '/stories/:domain/feed' => 'stories#index', :as => :stories,
+    :constraints => { :domain => /[^\/]+/ }
 end
