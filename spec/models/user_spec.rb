@@ -1,4 +1,4 @@
-describe User do
+xdescribe User do
 
   before(:each) { @user = FactoryGirl.create(:user) }
 
