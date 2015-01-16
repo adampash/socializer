@@ -14,14 +14,25 @@ class StoriesController < ApplicationController
   end
 
   def create
-    Story.update_or_create(story_params)
-    render nothing: true
+    @story = Story.update_or_create(story_params)
+    # render nothing: true
+    render json: @story
+  end
+
+  def show
+    @story = Story.find_by_kinja_id params[:kinja_id]
+
+    respond_to do |format|
+      format.html { render json: @story}
+      format.json { render json: @story}
+    end
   end
 
   private
   def story_params
     params.permit(:title, :url, :kinja_id,
-                  :publish_at, :tweet, :fb_post, :domain, :author)
+                  :publish_at, :tweet, :fb_post,
+                  :domain, :author, :set_to_publish)
   end
 
 end

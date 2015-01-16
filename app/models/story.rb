@@ -9,8 +9,7 @@ class Story < ActiveRecord::Base
     story = find_by_kinja_id params[:kinja_id]
     return create params if story.nil?
     story.update params
-    # return story unless story.nil?
-    # create params
+    story
   end
 
   def self.published_stories(domain)
