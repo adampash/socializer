@@ -59,17 +59,17 @@ RSpec.describe Story, :type => :model do
     expect(Story.find_by_kinja_id(@story.kinja_id).tweet).to eq "This is the tweet"
   end
 
-  it "#published_stories returns stories that have published" do
+  it "#published_stories returns stories post publish time set to publish" do
     Story.update_or_create({
-      title: "You\"ll never guess what happens next",
+      title: "Not ready to publish b/c it's in the future",
       author: "Me",
       url: "http://example.com/foo",
       domain: 'example.com',
       tweet: "This is the tweet",
       fb_post: "This is the fb post",
       publish_at: DateTime.now + 1.hour,
-      kinja_id: @story.kinja_id,
-      set_to_publish: false
+      kinja_id: 1290233,
+      set_to_publish: true
     })
     Story.update_or_create({
       title: "Ready to publish",
@@ -79,7 +79,18 @@ RSpec.describe Story, :type => :model do
       tweet: "This is the tweet",
       fb_post: "This is the fb post",
       publish_at: DateTime.now - 1.hour,
-      kinja_id: @story.kinja_id,
+      kinja_id: 12902333,
+      set_to_publish: true
+    })
+    Story.update_or_create({
+      title: "Not set to publish",
+      author: "Me",
+      url: "http://example.com/foo",
+      domain: 'example.com',
+      tweet: "This is the tweet",
+      fb_post: "This is the fb post",
+      publish_at: DateTime.now - 1.hour,
+      kinja_id: 2348390,
       set_to_publish: false
     })
     expect(Story.published_stories('example.com').length).to eq 1
