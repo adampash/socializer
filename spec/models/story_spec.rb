@@ -22,6 +22,7 @@ RSpec.describe Story, :type => :model do
   it { should validate_uniqueness_of(:kinja_id) }
   it { should respond_to(:domain) }
   it { should validate_presence_of(:domain) }
+  it { should respond_to(:set_to_publish) }
 
   it "#name returns a string" do
     expect(@story.title).to match 'This is a story'
@@ -36,7 +37,8 @@ RSpec.describe Story, :type => :model do
       tweet: "This is the tweet",
       fb_post: "This is the fb post",
       publish_at: DateTime.now,
-      kinja_id: 1231242
+      kinja_id: 1231242,
+      set_to_publish: false
     })
     expect(story.title).to eq "You\"ll never guess what happens next"
   end
@@ -50,7 +52,8 @@ RSpec.describe Story, :type => :model do
       tweet: "This is the tweet",
       fb_post: "This is the fb post",
       publish_at: DateTime.now,
-      kinja_id: @story.kinja_id
+      kinja_id: @story.kinja_id,
+      set_to_publish: false
     })
     expect(Story.where(kinja_id: @story.kinja_id).length).to eq 1
     expect(Story.find_by_kinja_id(@story.kinja_id).tweet).to eq "This is the tweet"
@@ -65,7 +68,8 @@ RSpec.describe Story, :type => :model do
       tweet: "This is the tweet",
       fb_post: "This is the fb post",
       publish_at: DateTime.now + 1.hour,
-      kinja_id: @story.kinja_id
+      kinja_id: @story.kinja_id,
+      set_to_publish: false
     })
     Story.update_or_create({
       title: "Ready to publish",
@@ -75,7 +79,8 @@ RSpec.describe Story, :type => :model do
       tweet: "This is the tweet",
       fb_post: "This is the fb post",
       publish_at: DateTime.now - 1.hour,
-      kinja_id: @story.kinja_id
+      kinja_id: @story.kinja_id,
+      set_to_publish: false
     })
     expect(Story.published_stories('example.com').length).to eq 1
     expect(Story.published_stories('example.com').first.title).to eq "Ready to publish"

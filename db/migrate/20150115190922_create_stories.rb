@@ -9,6 +9,7 @@ class CreateStories < ActiveRecord::Migration
       t.text :tweet
       t.text :fb_post
       t.datetime :publish_at
+      t.boolean :set_to_publish, default: false
 
       t.timestamps null: false
     end

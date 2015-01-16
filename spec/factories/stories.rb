@@ -8,6 +8,7 @@ FactoryGirl.define do
     fb_post "MyText"
     kinja_id 1398029
     publish_at "2015-01-15 14:09:22"
+    set_to_publish false
   end
 
 end

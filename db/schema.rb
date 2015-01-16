@@ -25,8 +25,9 @@ ActiveRecord::Schema.define(version: 20150115222217) do
     t.text     "tweet"
     t.text     "fb_post"
     t.datetime "publish_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean  "set_to_publish", default: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
   create_table "users", force: :cascade do |t|
