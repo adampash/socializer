@@ -1,10 +1,14 @@
 class User < ActiveRecord::Base
+  WHITELISTED_EMAILS = /^[\w\.]+@(gawker|deadspin|jezebel|kotaku|lifehacker|jalopnik|io9|gizmodo)\.com$/
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable,
     :omniauthable, :omniauth_providers => [:google_oauth2]
 
+  def self.whitelisted?(email)
+    !email.match(WHITELISTED_EMAILS).nil?
+  end
 
   def self.find_for_google_oauth2(access_token, signed_in_resource=nil)
     puts access_token

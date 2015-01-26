@@ -1,7 +1,8 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   protect_from_forgery with: :exception, :except => :google_oauth2
   def google_oauth2
-      # You need to implement the method below in your model (e.g. app/models/user.rb)
+    if User.whitelisted? request.env["omniauth.auth"]["info"]["email"]
+
       @user = User.find_for_google_oauth2(request.env["omniauth.auth"], current_user)
 
       if @user.persisted?
@@ -13,6 +14,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         session["devise.google_data"] = request.env["omniauth.auth"]
         redirect_to new_user_registration_url
       end
+    else
+      flash[:alert] = "You need to log in with your Gawker Media account"
+      redirect_to root_url
+    end
   end
 end
 

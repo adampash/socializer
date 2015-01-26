@@ -2,7 +2,9 @@
 <p><%= link_to 'Users:', users_path %> <%= User.count %> registered</p>
 
 <script>
-  setTimeout(function() {
-      window.close();
-  }, 200);
+  if($('#flash_alert').length == 0) {
+    setTimeout(function() {
+        window.close();
+    }, 50);
+  }
 </script>
