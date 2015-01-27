@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get '/signout' => 'sessions#destroy', :as => :signout
   get '/users/auth/failure' => 'sessions#failure'
   post '/stories' => 'stories#create'
+  post '/stories/update_pub' => 'stories#update_pub'
   get '/stories/:kinja_id' => 'stories#show'
   get '/:domain/:feed_type' => 'stories#index',
     :constraints => { :domain => /[^\/]+/ }

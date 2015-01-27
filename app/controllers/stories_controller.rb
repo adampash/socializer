@@ -1,5 +1,5 @@
 class StoriesController < ApplicationController
-  protect_from_forgery with: :exception, :except => :create
+  protect_from_forgery with: :exception, :except => [:create, :update_pub]
   before_action :authenticate_user!, only: [:create]
 
   def index
@@ -16,6 +16,16 @@ class StoriesController < ApplicationController
   def create
     @story = Story.update_or_create(story_params)
     # render nothing: true
+    render json: @story
+  end
+
+  def update_pub
+    @story = Story.find_by_kinja_id(params[:kinja_id])
+    unless @story.nil?
+      @story = Story.update_or_create(story_params)
+    else
+      @story = false
+    end
     render json: @story
   end
 
