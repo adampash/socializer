@@ -1,12 +1,17 @@
 %div{"style" => "max-width: 720px; margin: auto;"}
-  %h2 Set up SocialFlow with a new domain
+  %h2 Set up Gawker Socializer in SocialFlow with a new domain
 
-  -# %img{"src" => 'http://files.adampash.com/s/What_Is_Editorial_Labs__1A79698B.png', :style => 'float: right'}
+  %h3 0. What new domain are you setting up?
+
+  %label My new domain:
+  %input{:type => 'text', :id => 'domain_input', :style => "width: 60%;",
+    :placeholder => 'dog.gawker.com'}
+
   %h3 1. Use the tool on a new domain
   %p If you've started writing your tweets and facebook posts in Kinja on a new domain/subdomain, you can find the feeds to set up a new domain at: 
 
-  %p <strong>http://gawker-socializer.herokuapp.com/[your-domain]/[network].xml</strong>
-  %p E.g.: http://gawker-socializer.herokuapp.com/dog.gawker.com/twitter.xml
+  %p <strong>Twitter: <a href="#" target="_blank" class="feed_link">http://gawker-socializer.herokuapp.com/<span class="your-domain">[your-domain]</span>/twitter.xml</a></strong>
+  %p <strong>Facebook: <a href=#" target="_blank" class="feed_link">http://gawker-socializer.herokuapp.com/<span class="your-domain">[your-domain]</span>/facebook.xml</a></strong>
 
   %h3 2. Add a new content source in SocialFlow
   %p= raw "Visit the #{link_to 'SocialFlow Content Sources page', 'https://www.socialflow.com/settings/application/content_sources', :target => '_blank'} and click on <strong>Add New Content Source</strong>"

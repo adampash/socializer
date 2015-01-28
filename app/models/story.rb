@@ -13,6 +13,6 @@ class Story < ActiveRecord::Base
   end
 
   def self.published_stories(domain)
-    where(domain: domain).where(set_to_publish: true).where("publish_at <= :now", now: DateTime.now)
+    where(domain: domain).where(set_to_publish: true).where("publish_at <= :now", now: DateTime.now).limit(20)
   end
 end
