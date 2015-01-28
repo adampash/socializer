@@ -1,13 +1,14 @@
 %rss{:version => "2.0"}
   %channel
     %title= "#{@domain} #{@feed_type} feed"
-    %link= "Foo"
+    %link= "http://gawker-socializer.herokuapp.com/#{@domain}/#{@feed_type}.xml"
     %description= "#{@feed_type.capitalize} feed for stories from #{@domain}"
-    %language= "en"
+    %language= "en-us"
     - @stories.each do |story|
       %item
         %title= story.title
         %link= story.url
+        %guid{"isPermaLink" => "true"}= story.url
         %description= @feed_type == 'twitter' ? story.tweet : story.fb_post
         %pubDate= story.publish_at
         %creator= story.author
