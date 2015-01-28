@@ -1,0 +1,41 @@
+%div{"style" => "max-width: 720px; margin: auto;"}
+  %h2 Set up SocialFlow with a new domain
+
+  -# %img{"src" => 'http://files.adampash.com/s/What_Is_Editorial_Labs__1A79698B.png', :style => 'float: right'}
+  %h3 1. Use the tool on a new domain
+  %p If you've started writing your tweets and facebook posts in Kinja on a new domain/subdomain, you can find the feeds to set up a new domain at: 
+
+  %p <strong>http://gawker-socializer.herokuapp.com/[your-domain]/[network].xml</strong>
+  %p E.g.: http://gawker-socializer.herokuapp.com/dog.gawker.com/twitter.xml
+
+  %h3 2. Add a new content source in SocialFlow
+  %p= raw "Visit the #{link_to 'SocialFlow Content Sources page', 'https://www.socialflow.com/settings/application/content_sources', :target => '_blank'} and click on <strong>Add New Content Source</strong>"
+  %img{"src" => 'http://files.adampash.com/s/_9__SocialFlow_1A79658F.png'}
+
+  %h3 3. Add the new feed
+  %p Paste the url of the feed you want to add and click <strong>Next</strong>.
+
+  %img{"src" => 'http://files.adampash.com/s/_9__SocialFlow_1A7967A6.png'}
+
+  %p Now choose the social account you want to post to, select either "Post most recent item" or "Post next new item" (your call), then click <strong>Add & Customize</strong>.
+
+  %img{"src" => 'http://files.adampash.com/s/_9__SocialFlow_1A797716.png'}
+
+  %h3 4. Customize how SocialFlow publishes new items
+  %p You have a lot of options for how SocialFlow handles new items. By default, it sets new items to <strong>Hold</strong>. Click <strong>Edit</strong> next to <strong>Default Message Status</strong> and change it to <strong>Optimize</strong> if you like that or <strong>Publish Now</strong> if you just want it to publish new posts as they go live. 
+
+  %img{"src" => 'http://files.adampash.com/s/_9__SocialFlow_1A79790C.png'}
+
+  %p Make sure to click <strong>Save</strong> any time you edit a setting.
+
+  %p Now click <strong>Edit</strong> next to <strong>Templates</strong> and select <strong>[content][link]</strong> from the dropdown menu, then click <strong>Save</strong>.
+
+  %p You can play around with other options if you want, but those are the two that must be set.
+
+  %h3 5. Mark the new feed as Active
+  %p Last, at the top of the page, make sure you've marked this feed as active by clicking the <strong>On</strong> button next to <strong>Active</strong>.
+
+  %img{"src" => 'http://files.adampash.com/s/_9__SocialFlow_1A797A3D.png'}
+
+  %h3 OMG good job!
+  %p Now, when your posts publish on Kinja, the Twitter and Facebook posts should automatically show up in SocialFlow, set either to publish immediately or to <i>Optimize</i>.

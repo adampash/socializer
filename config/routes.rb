@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root to: 'visitors#index'
   get '/login_instructions' => 'visitors#login_instructions'
   get '/login_success' => 'visitors#login_success'
+  get '/setup' => 'visitors#setup'
   # root to: "home#index"
   get '/login_check' => 'users#logged_in'
   get '/users/auth/:provider/callback' => 'sessions#create'
