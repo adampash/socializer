@@ -3,7 +3,7 @@ class StoriesController < ApplicationController
   before_action :authenticate_user!, only: [:create]
 
   def index
-    @stories = Story.published_stories(params[:domain])
+    @stories = Story.published_stories(params[:domain], params[:feed_type])
     @feed_type = params[:feed_type]
     @domain = params[:domain]
 

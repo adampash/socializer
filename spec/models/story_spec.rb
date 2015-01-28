@@ -97,4 +97,31 @@ RSpec.describe Story, :type => :model do
     expect(Story.published_stories('example.com').first.title).to eq "Ready to publish"
   end
 
+  it "#published_stories only returns stories with content per domain" do
+    Story.update_or_create({
+      title: "Not ready to publish b/c it's in the future",
+      author: "Me",
+      url: "http://example.com/foo",
+      domain: 'example.com',
+      tweet: "",
+      fb_post: "This is the fb post",
+      publish_at: DateTime.now - 1.hour,
+      kinja_id: 1290233,
+      set_to_publish: true
+    })
+    Story.update_or_create({
+      title: "Ready to publish",
+      author: "Me",
+      url: "http://example.com/foo",
+      domain: 'example.com',
+      tweet: "This is the tweet",
+      fb_post: "This is the fb post",
+      publish_at: DateTime.now - 1.hour,
+      kinja_id: 12902333,
+      set_to_publish: true
+    })
+    expect(Story.published_stories('example.com', 'twitter').length).to eq 1
+    expect(Story.published_stories('example.com').first.tweet).to eq "This is the tweet"
+  end
+
 end
