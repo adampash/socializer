@@ -9,14 +9,14 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "Google"
         reset_session
         session[:user_id] = @user.id
-        sign_in_and_redirect @user, :event => :authentication
+        redirect_to login_success_url
       else
         session["devise.google_data"] = request.env["omniauth.auth"]
         redirect_to new_user_registration_url
       end
     else
       flash[:alert] = "You need to log in with your Gawker Media account"
-      redirect_to root_url
+      redirect_to login_instructions_url
     end
   end
 end
