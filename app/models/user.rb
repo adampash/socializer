@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  WHITELISTED_EMAILS = /^[\w\.]+@(gawker|deadspin|jezebel|kotaku|lifehacker|jalopnik|io9|gizmodo)\.com$/
+  WHITELISTED_EMAILS = /^\w.*@(gawker|deadspin|jezebel|kotaku|lifehacker|jalopnik|io9|gizmodo)\.com$/
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

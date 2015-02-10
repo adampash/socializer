@@ -6,5 +6,6 @@ RSpec.describe User, :type => :model do
     expect(User.whitelisted?("adam.pash@gawker.coms")).to be false
     expect(User.whitelisted?("@io9.com")).to be false
     expect(User.whitelisted?("charliejane@io9.com")).to be true
+    expect(User.whitelisted?("joe.foo-bar@lifehacker.com")).to be true
   end
 end
