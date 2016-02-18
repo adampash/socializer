@@ -14,6 +14,6 @@ class Story < ActiveRecord::Base
 
   def self.published_stories(domain, network="twitter")
     network == 'twitter' ? attr = 'tweet' : attr = 'fb_post'
-    where(domain: domain).where(set_to_publish: true).where("publish_at <= :now", now: DateTime.now).where.not(attr => "").order('publish_at DESC').limit(20)
+    where(domain: domain).where(set_to_publish: true).where("publish_at <= :now", now: DateTime.now - 2.minutes).where.not(attr => "").order('publish_at DESC').limit(20)
   end
 end
